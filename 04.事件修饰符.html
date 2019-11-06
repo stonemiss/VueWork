@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#inner{
+				height: 200px;
+				background: cornflowerblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 例1  .stop阻止冒泡事件，下面的例子如果没有.stop,点击按钮事件会冒泡到div中也会触发 -->
+			<!-- <div id="inner" @click="divHandler">
+				<input type="button" name="" id="" value="戳我" @click.stop="btnhandler" />
+			</div> -->
+			
+			<!-- 例2 .prevent阻止默认行为。下面就阻止a标签的跳转 -->
+			<!-- <a href="http://www.baidu.com" @click.prevent="clickLink">baidu</a> -->
+			
+			<!-- 例3 .capture实现捕获触发机制，正常情况下是冒泡机制，往外走，捕获机制是嫌计算最外面的往里走 -->
+			<!-- <div id="inner" @click.capture="divHandler">
+				<input type="button" name="" id="" value="戳我" @click="btnhandler" />
+			</div> -->
+			
+			<!-- 例4 .self只有自身触发的才执行，如下列.self的div 就不会被btn的冒泡事件影响 -->
+			<!-- <div id="inner" @click.self="divHandler">
+				<input type="button" name="" id="" value="戳我" @click="btnhandler" />
+			</div> -->
+			
+			<!-- 例2 .once只触发一次事件处理。下例就只能阻止一次a标签的跳转 -->
+			<!-- <a href="http://www.baidu.com" @click.prevent.once="clickLink">baidu</a> -->
+			
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data:{
+					
+				},
+				methods: {
+					divHandler(){
+						console.log('这是div点击事件')
+					},
+					btnhandler(){
+						console.log('这是btn点击事件')
+					},
+					clickLink(){
+						console.log('这是个链接')
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

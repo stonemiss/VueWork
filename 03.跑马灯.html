@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>跑马灯</title>
+		<!-- 1.引入VUE包 -->
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- 2.创建一个控制区域 -->
+		<div id="app">
+			<input type="button" name="" id="" value="跑起来" @click="run" />
+			<input type="button" name="" id="" value="停下来" @click="stop"/>
+			<h4>{{msg}}</h4>
+		</div>
+		<!-- 3.创建代码区 -->
+		<script type="text/javascript">
+			// 注意:想要获取vm中的date数据,或者methods中的方法,必须通过this.数据名,或者this.方法名来调用.这里的this代表vm示例对象.
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					msg: '稳住!，我们能赢~~~',
+					intervalId: null,
+				},
+				methods: {
+					run() {
+						if(this.intervalId != null){return}
+						// setInterval定时器,自动循环
+						// setInterval(function(){       如果用左边个方法下面的this指向就是窗口，不是VM了，指向错误。所以可以使用箭头函数=》,可以将this指向父级,变成VM的this
+						this.intervalId =  setInterval(() => {
+							// 获取字符串首位字符 substring(开始位置，结束位置).
+							var top = this.msg.substring(0, 1)
+							// 获取字符串除了首位后面的字符
+							var end = this.msg.substring(1)
+							// 重新拼接字符串,把首位字母房后最后
+							this.msg = end + top
+							// alert(this.msg)
+							// 注意:在VM示例中会监听自己身上date数据的所有改变， 只要data数据发生了改变,会自动同步到页面中
+						},200)
+					},//花括号后面跟'，'符号,不然会报错
+					// 清楚定时器需要访问setInerval,所以要给setIntval赋予一个变量,但是stop访问不了run里面的内容,所以要在 date数据中建立一个公用的变量.
+					stop(){
+						clearInterval(this.intervalId)
+						this.intervalId = null
+					}
+					// 现在有个BUG就是跑起来可以一直点击,不停循环,需要if判断下只让他跑一下,
+				}
+
+			})
+			//分析
+			// 1.首先要给跑起来'跑起来'按钮绑定一个点击事件 v-on 或者简写 @
+			// 2.给事件写一个方法methods,写事件的逻辑代码:获取msg字符串,然后调用字符串方法substring进行字符串截取,把首位截取放到最后一位.
+			// 3.为了实现点击自动截取效果,需要把2的代码放到一个定时器中.
+		</script>
+	</body>
+</html>
