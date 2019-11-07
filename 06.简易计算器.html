@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" name="" id="" v-model="n1" />
+			<select v-model="opre">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+			</select>
+			<input type="text" name="" id="" v-model="n2" />
+			<input type="button" name="" id="" value="=" @click="clac" />
+			<input type="text" name="" id="" v-model="result" />
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					n1: 0,
+					n2: 0,
+					opre: '+',
+					result: 0,
+
+				},
+				methods: {
+					clac() {
+						//常規方法一
+						switch (this.opre) {
+							case '+':
+								this.result = parseFloat(this.n1) + parseFloat(this.n2)
+								break;
+							case '-':
+								this.result = parseFloat(this.n1) - parseFloat(this.n2)
+								break;
+							case '*':
+								this.result = parseFloat(this.n1) * parseFloat(this.n2)
+								break;
+							case '/':
+								this.result = parseFloat(this.n1) / parseFloat(this.n2)
+								break;
+						}
+						//特殊方法二 eval方法好像容易報錯 盡量少用
+						// this.result =  eval(parseFloat(this.n1) + this.opre + parseFloat(this.n2))
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

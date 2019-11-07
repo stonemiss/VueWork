@@ -3,7 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
+		<div id="app">
+			<h4>{{msg}}</h4>
+			<p>v-bind/:只能单向读取数据从M到V，不能将数据返回msg</p>
+			<input type="" name="" id="" v-bind:value="msg" />
+			<p>v-model可以双向绑定数据，能够读取msg数据，修改后也能将内容返回msg，
+			model只能作用于表单元素<br>
+			input(radio,text,email,adreess......) textarea checkbox select
+			</p>
+			<input type="" name="" id="" v-model="msg" />
+		</div>
+		
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data:{
+					msg:'快乐工作，健康生活。'
+				},
+			})
+		</script>
 	</body>
 </html>

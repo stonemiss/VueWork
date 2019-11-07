@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.red{
+				color: #FF0000;
+			}
+			.thin{
+				font-weight: 200;
+			}
+			.italic{
+				font-style: italic;
+			}
+			.active{
+				letter-spacing: 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+			<!-- ******使用class样式 *********-->
+			<!-- 普通的样式方式 -->
+			<!-- <h1 class="red thin">快乐生活</h1> -->
+			
+			<!-- 1.方法一。通过数组的方法赋予样式，数组内方法名要加引号，这个方法不太实用 -->
+			<!-- <h1 :class="['red','thin','italic']">快乐生活</h1> -->
+			
+			<!-- 2.方法二。在数组中用三元表达式，不加引号就是一个属性需要从data获取，为真就执行active方法。方法比较复杂不推荐 -->
+			<!-- <h1 :class="['red','thin',flag?'active':'']">快乐生活</h1> -->
+			
+			<!-- 3.方法三。在数组中实用对象代替三元表达 -->
+			<!-- <h1 :class="['red','thin',{'active':flag}]">快乐生活</h1> -->
+			
+			<!-- 4.方法四。直接绑定一个对象，对象的属性可加引号也可不加,也可以直接把属性写到data对象中 -->
+			<!-- <h1 :class="{'red':true, italic: true}">快乐生活</h1> -->
+			<!-- <h1 :class="classObj">快乐生活</h1> -->
+			
+			<!-- ******使用内联样式 *********-->
+		</div>
+		<script type="text/javascript">
+			var vm =new Vue({
+				el: '#app',
+				data:{
+					flag:true,
+					classObj:{'red':true, italic: true}
+				},
+				mathods:{}
+			})
+		</script>
+	</body>
+</html>
