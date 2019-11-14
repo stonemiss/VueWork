@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../lib/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 普通的数组循环遍历 -->
+			<!-- <p>{{list[0]}}</p>
+			<p>{{list[1]}}</p>
+			<p>{{list[2]}}</p>
+			<p>{{list[3]}}</p> -->
+			<p v-for="item in list">{{item}}</p>
+			<p>-----------------------------</p>
+			<p v-for="per in list">姓名：{{per.name}}---年龄：{{per.age}}</p>
+			<p>-----------------------------</p>
+			<p v-for="(per,i) in list">索引是：{{i}}---姓名：{{per.name}}---年龄：{{per.age}}</p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					list:[
+						{name:'张三',age:18},
+						{name:'李四',age:26},
+						{name:'王五',age:28},
+						{name:'赵六',age:30}
+					]
+				},
+				methods:{}
+			})
+		</script>
+	</body>
+</html>

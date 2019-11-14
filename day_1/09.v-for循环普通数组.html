@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../lib/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 普通的数组循环遍历 -->
+			<!-- <p>{{list[0]}}</p>
+			<p>{{list[1]}}</p>
+			<p>{{list[2]}}</p>
+			<p>{{list[3]}}</p> -->
+			<p v-for="item in list">{{item}}</p>
+			<p>-----------------------------</p>
+			<p v-for="(item,i) in list">索引是{{i}}-----对应内容是{{item}}</p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					list:[1,2,3,4,5]
+				},
+				methods:{}
+			})
+		</script>
+	</body>
+</html>

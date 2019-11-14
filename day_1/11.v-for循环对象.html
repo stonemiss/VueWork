@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../lib/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p v-for="val in user">{{val}}</p>
+			<p>-----------------------------</p>
+			<p v-for="(val,key) in user">序号是：{{key}}--对应内容是:{{val}}</p>
+			<p>-----------------------------</p>
+			<!-- v-for对象中除了val,key之外还有第三个属性索引 -->
+			<p v-for="(val,key,i) in user">索引是{{i}}---序号是：{{key}}--对应内容是:{{val}}</p>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					user:{
+						name:'思念',
+						age:29,
+						gemder:'男'
+					}
+				},
+				methods:{}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../lib/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 方法一 -->
+			<!-- <input type="button" value="开关" @click="turn" /> -->
+			
+			<!-- 方法二。直接在click内写 -->
+			<input type="button" value="开关" @click="flag=!flag" />
+			<!-- v-if每次都会重新的加载删除模式。v-show不会重新加载，只是切换元素的display:none属性-->
+			<!-- 所以v-if会比较高的切换性能消耗，v-show会有较高的初始消耗，如果需要频繁的切换不建议用if,如果元素基本很少显示用建议用if -->
+			<h4 v-if="flag">v-if</h4>
+			<h4 v-show="flag">v-show</h4>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					flag: true,
+				},
+				methods:{
+					turn(){
+						this.flag = !this.flag
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
